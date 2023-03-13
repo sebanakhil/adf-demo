@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "ase-adf-demo"
+		},
+		"AzureDataLakeStorageoutput_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorageoutput_properties_typeProperties_url": {
+			"value": "https://asestorageaccountdemo.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage681_properties_privateLinkResourceId": {
+			"value": "/subscriptions/db8db242-59a4-48a8-bf22-a14512143199/resourceGroups/ase_adf_demo/providers/Microsoft.Storage/storageAccounts/asestorageaccountdemo"
+		},
+		"AzureDataLakeStorage681_properties_groupId": {
+			"value": "dfs"
+		},
+		"ase_ssdemo_mpe_properties_privateLinkResourceId": {
+			"value": "/subscriptions/db8db242-59a4-48a8-bf22-a14512143199/resourceGroups/ase_adf_demo/providers/Microsoft.Sql/servers/ase-ssdemo"
+		},
+		"ase_ssdemo_mpe_properties_groupId": {
+			"value": "sqlServer"
+		}
+	}
+}

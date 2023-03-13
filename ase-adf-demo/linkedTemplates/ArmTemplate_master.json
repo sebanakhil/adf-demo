@@ -1,0 +1,91 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "ase-adf-demo"
+		},
+		"AzureDataLakeStorageoutput_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorageoutput'"
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
+		},
+		"AzureDataLakeStorageoutput_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://asestorageaccountdemo.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage681_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/db8db242-59a4-48a8-bf22-a14512143199/resourceGroups/ase_adf_demo/providers/Microsoft.Storage/storageAccounts/asestorageaccountdemo"
+		},
+		"AzureDataLakeStorage681_properties_groupId": {
+			"type": "string",
+			"defaultValue": "dfs"
+		},
+		"ase_ssdemo_mpe_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/db8db242-59a4-48a8-bf22-a14512143199/resourceGroups/ase_adf_demo/providers/Microsoft.Sql/servers/ase-ssdemo"
+		},
+		"ase_ssdemo_mpe_properties_groupId": {
+			"type": "string",
+			"defaultValue": "sqlServer"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "ase-adf-demo_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureDataLakeStorageoutput_accountKey": {
+						"value": "[parameters('AzureDataLakeStorageoutput_accountKey')]"
+					},
+					"AzureSqlDatabase1_connectionString": {
+						"value": "[parameters('AzureSqlDatabase1_connectionString')]"
+					},
+					"AzureDataLakeStorage681_properties_privateLinkResourceId": {
+						"value": "[parameters('AzureDataLakeStorage681_properties_privateLinkResourceId')]"
+					},
+					"AzureDataLakeStorage681_properties_groupId": {
+						"value": "[parameters('AzureDataLakeStorage681_properties_groupId')]"
+					},
+					"ase_ssdemo_mpe_properties_privateLinkResourceId": {
+						"value": "[parameters('ase_ssdemo_mpe_properties_privateLinkResourceId')]"
+					},
+					"ase_ssdemo_mpe_properties_groupId": {
+						"value": "[parameters('ase_ssdemo_mpe_properties_groupId')]"
+					},
+					"AzureDataLakeStorageoutput_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorageoutput_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
