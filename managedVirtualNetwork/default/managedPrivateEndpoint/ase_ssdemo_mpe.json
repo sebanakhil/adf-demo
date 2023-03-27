@@ -1,0 +1,7 @@
+{
+	"name": "ase_ssdemo_mpe",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/db8db242-59a4-48a8-bf22-a14512143199/resourceGroups/ase_adf_demo/providers/Microsoft.Sql/servers/ase-ssdemo",
+		"groupId": "sqlServer"
+	}
+}
